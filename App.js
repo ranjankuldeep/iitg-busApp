@@ -92,7 +92,7 @@ export default function App() {
   console.log(lat);
   return (
     <React.Fragment>
-      <SafeAreaView>
+      <SafeAreaView style={styles.main}>
         <View style={styles.container}>
           <MapView style={styles.map} showsUserLocation={true}></MapView>
         </View>
@@ -107,15 +107,17 @@ export default function App() {
             ></TextInput>
           )}
         </View>
-        <View>
+        <View style={styles.main}>
           {!bool && (
-            <Button
-              title="start tracking"
-              onPress={() => {
-                console.log(bool);
-                setBool(true);
-              }}
-            />
+            <View style={{ marginLeft: 50, marginRight: 50, borderRadius: 80 }}>
+              <Button
+                title="start tracking"
+                onPress={() => {
+                  console.log(bool);
+                  setBool(true);
+                }}
+              />
+            </View>
           )}
           {bool && (
             <Button
@@ -136,13 +138,19 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#fff",
+    backgroundColor: "black",
     alignItems: "center",
     paddingTop: 80,
+    borderRadius: 89,
   },
   input: {
     alignItems: "center",
-    backgroundColor: "red",
+    backgroundColor: "white",
+    margin: 10,
+    width: Dimensions.get("window").width * 0.9,
+    padding: 10,
+    justifyContent: "center",
+
     borderRadius: 20,
   },
   map: {
@@ -150,6 +158,11 @@ const styles = StyleSheet.create({
     height: Dimensions.get("window").height * 0.5,
   },
   touch: {
+    alignItems: "center",
+  },
+  main: {
+    backgroundColor: "black",
+    flex: 1,
     alignItems: "center",
   },
 });
